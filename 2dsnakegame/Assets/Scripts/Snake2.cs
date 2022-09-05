@@ -6,6 +6,7 @@ public class Snake2 : MonoBehaviour
 {
     private List<Transform> segments = new List<Transform>();
     public Transform segmentPrefab;
+    //public Score ScoreController;
     public Vector2 direction = Vector2.right;
     private Vector2 input;
     public int width;
@@ -72,13 +73,14 @@ public class Snake2 : MonoBehaviour
         Transform segment = Instantiate(segmentPrefab);
         segment.position = segments[segments.Count - 1].position;
         segments.Add(segment);
-        
+       // ScoreController.IncreaseScore(1);
     }
 
     public void shrink()
     {
         Destroy(segments[segments.Count - 1].gameObject);
         segments.RemoveAt(segments.Count - 1);
+       // ScoreController.DecreaseScore();
     }
 
 

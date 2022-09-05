@@ -6,6 +6,8 @@ public class Snake : MonoBehaviour
 {
     private List<Transform> segments = new List<Transform>();
     public Transform segmentPrefab;
+    public Score ScoreController;
+    public Gameover gameovercontroller;
     public Vector2 direction = Vector2.right;
     private Vector2 input;
     public int initialSize = 4;
@@ -15,7 +17,6 @@ public class Snake : MonoBehaviour
     {
         ResetState();
     }
-
   
     private void Update()
     {
@@ -71,12 +72,14 @@ public class Snake : MonoBehaviour
         Transform segment = Instantiate(segmentPrefab);
         segment.position = segments[segments.Count - 1].position;
         segments.Add(segment);
-     //   scoreUpdate.IncreaseScore(1);
+            
+        
     }
     public void shrink()
     {
         Destroy(segments[segments.Count - 1].gameObject);
         segments.RemoveAt(segments.Count - 1);
+        
     }
  
     public void ResetState()
@@ -84,27 +87,33 @@ public class Snake : MonoBehaviour
         direction = Vector2.right;
         transform.position = Vector3.zero;
 
-     
+
         for (int i = 1; i < segments.Count; i++)
         {
             Destroy(segments[i].gameObject);
         }
 
-        
+
         segments.Clear();
         segments.Add(transform);
+        snakedeath();
 
-        
         for (int i = 0; i < initialSize - 1; i++)
         {
             Grow();
         }
     }
 
+    private void snakedeath()
+    {
+        gameovercontroller.PlayerDied();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Food"))
+        if (other.GetComponent<Food>())
         {
+            ScoreController.IncreaseScore(10);
             Grow();
             
         }
@@ -114,7 +123,9 @@ public class Snake : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("poison"))
         {
+            ScoreController.DecreaseScore();
             shrink();
+            
         }
      
     }

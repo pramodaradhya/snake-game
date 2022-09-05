@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class ScoreUI : MonoBehaviour
+public class Score : MonoBehaviour
 {
 	TextMeshProUGUI scoreText;
 
@@ -20,7 +20,7 @@ public class ScoreUI : MonoBehaviour
 
 	public void RefreshUI()
 	{
-		scoreText.text = "Score: " + score;
+		scoreText.text = "Score : " + score;
 	}
 
 	public void SetScoreIncrease(int _score)

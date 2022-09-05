@@ -1,29 +1,26 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class GameOver : MonoBehaviour
+public class Gameover : MonoBehaviour
 {
-    public GameObject gameOverPanel;
-    public GameObject playerWonUI;
-    void Awake()
+    public Button buttonrestart;
+    private void Awake()
     {
-        gameOverPanel.SetActive(false);
+        buttonrestart.onClick.AddListener(ReloadLevel);
+
     }
 
-    public void SetPanelActive()
+    private void ReloadLevel()
     {
-        gameOverPanel.SetActive(true);
-        playerWonUI.SetActive(true);
+        SceneManager.LoadScene(0);
     }
 
-    public void SetPlayerWonUI(GameObject _playerWonUI)
+    public void PlayerDied()
     {
-        playerWonUI = _playerWonUI;
-        playerWonUI.SetActive(false);
-    }
-
-    public GameObject GetPlayerWonUI()
-    {
-        return playerWonUI;
+        gameObject.SetActive(true);
     }
 }
