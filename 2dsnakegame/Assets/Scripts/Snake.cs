@@ -78,21 +78,7 @@ public class Snake : MonoBehaviour
         Destroy(segments[segments.Count - 1].gameObject);
         segments.RemoveAt(segments.Count - 1);
     }
-    public void wrap()
-    {
-        Vector2Int ValidateGridPosition(Vector2Int gridPosition)
-        {
-            if (gridPosition.x < 0)
-            {
-                gridPosition.x = width - 1;
-            }
-            if (gridPosition.y < 0)
-            {
-                gridPosition.y = height - 1;
-            }
-            return gridPosition;
-        }
-    }
+ 
     public void ResetState()
     {
         direction = Vector2.right;
@@ -130,10 +116,7 @@ public class Snake : MonoBehaviour
         {
             shrink();
         }
-        else if (other.gameObject.CompareTag("wrap"))
-        {
-            wrap();
-        }
+     
     }
 
 }

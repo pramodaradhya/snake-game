@@ -9,8 +9,8 @@ public class Boundaries : MonoBehaviour
 	float addValue = 1f;
 	private void Start()
 	{
-		xPositionWarp = 21f;
-		yPositionWarp = 10f;
+		xPositionWarp = 30f;
+		yPositionWarp = 20f;
 	}
 
 	private void Update()

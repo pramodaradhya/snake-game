@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -206,6 +207,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -294,6 +296,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -537,6 +540,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -599,7 +603,22 @@ MonoBehaviour:
   segmentPrefab: {fileID: 4321215613580345309, guid: d042658e05e77cc48a9c0b788f818351,
     type: 3}
   direction: {x: 1, y: 0}
+  width: 0
+  height: 0
   initialSize: 4
+--- !u!114 &1109385881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109385875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e101560dba6c9aa4b8175ad2746e37b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snake: {fileID: 1109385875}
 --- !u!1 &1181598901
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,6 +666,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -825,6 +845,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -946,6 +967,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1027,6 +1049,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1707670539}
     m_Modifications:
+    - target: {fileID: 957727193422320554, guid: 4a1a2e7758badec4fa949661cfd92923,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 957727193422320554, guid: 4a1a2e7758badec4fa949661cfd92923,
+        type: 3}
+      propertyPath: direction.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 957727193422320554, guid: 4a1a2e7758badec4fa949661cfd92923,
+        type: 3}
+      propertyPath: segmentPrefab
+      value: 
+      objectReference: {fileID: 4321215613580345309, guid: 4410c380239cff549b12e236ae3d6507,
+        type: 3}
     - target: {fileID: 957727193422320561, guid: 4a1a2e7758badec4fa949661cfd92923,
         type: 3}
       propertyPath: m_Name
@@ -1036,6 +1074,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 957727193422320566, guid: 4a1a2e7758badec4fa949661cfd92923,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 957727193422320566, guid: 4a1a2e7758badec4fa949661cfd92923,
         type: 3}
@@ -1054,6 +1097,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 957727193422320566, guid: 4a1a2e7758badec4fa949661cfd92923,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 957727193422320566, guid: 4a1a2e7758badec4fa949661cfd92923,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -1066,16 +1114,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 957727193422320566, guid: 4a1a2e7758badec4fa949661cfd92923,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 957727193422320566, guid: 4a1a2e7758badec4fa949661cfd92923,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 957727193422320566, guid: 4a1a2e7758badec4fa949661cfd92923,
         type: 3}
@@ -1092,26 +1130,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 957727193422320554, guid: 4a1a2e7758badec4fa949661cfd92923,
-        type: 3}
-      propertyPath: segmentPrefab
-      value: 
-      objectReference: {fileID: 4321215613580345309, guid: 4410c380239cff549b12e236ae3d6507,
-        type: 3}
-    - target: {fileID: 957727193422320554, guid: 4a1a2e7758badec4fa949661cfd92923,
-        type: 3}
-      propertyPath: direction.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 957727193422320554, guid: 4a1a2e7758badec4fa949661cfd92923,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 957727193422320567, guid: 4a1a2e7758badec4fa949661cfd92923,
         type: 3}
-      propertyPath: m_Color.r
-      value: 1
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 957727193422320567, guid: 4a1a2e7758badec4fa949661cfd92923,
         type: 3}
@@ -1120,11 +1142,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 957727193422320567, guid: 4a1a2e7758badec4fa949661cfd92923,
         type: 3}
-      propertyPath: m_Color.b
-      value: 0
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 957727193422320554, guid: 4a1a2e7758badec4fa949661cfd92923, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a1a2e7758badec4fa949661cfd92923, type: 3}
 --- !u!1 &1707670538
 GameObject:
@@ -1254,6 +1275,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1362,6 +1384,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1417,6 +1440,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1707670539}
     m_Modifications:
+    - target: {fileID: 957727193422320554, guid: 4a1a2e7758badec4fa949661cfd92923,
+        type: 3}
+      propertyPath: segmentPrefab
+      value: 
+      objectReference: {fileID: 4321215613580345309, guid: 4410c380239cff549b12e236ae3d6507,
+        type: 3}
     - target: {fileID: 957727193422320561, guid: 4a1a2e7758badec4fa949661cfd92923,
         type: 3}
       propertyPath: m_Name
@@ -1426,6 +1455,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 957727193422320566, guid: 4a1a2e7758badec4fa949661cfd92923,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 957727193422320566, guid: 4a1a2e7758badec4fa949661cfd92923,
         type: 3}
@@ -1444,6 +1478,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 957727193422320566, guid: 4a1a2e7758badec4fa949661cfd92923,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 957727193422320566, guid: 4a1a2e7758badec4fa949661cfd92923,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -1456,16 +1495,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 957727193422320566, guid: 4a1a2e7758badec4fa949661cfd92923,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 957727193422320566, guid: 4a1a2e7758badec4fa949661cfd92923,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 957727193422320566, guid: 4a1a2e7758badec4fa949661cfd92923,
         type: 3}
@@ -1482,16 +1511,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 957727193422320554, guid: 4a1a2e7758badec4fa949661cfd92923,
-        type: 3}
-      propertyPath: segmentPrefab
-      value: 
-      objectReference: {fileID: 4321215613580345309, guid: 4410c380239cff549b12e236ae3d6507,
-        type: 3}
     - target: {fileID: 957727193422320567, guid: 4a1a2e7758badec4fa949661cfd92923,
         type: 3}
-      propertyPath: m_Color.r
-      value: 1
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 957727193422320567, guid: 4a1a2e7758badec4fa949661cfd92923,
         type: 3}
@@ -1500,8 +1523,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 957727193422320567, guid: 4a1a2e7758badec4fa949661cfd92923,
         type: 3}
-      propertyPath: m_Color.b
-      value: 0
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a1a2e7758badec4fa949661cfd92923, type: 3}
@@ -1511,3 +1534,16 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 957727193635159386}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &957727193635159392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957727193635159387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e101560dba6c9aa4b8175ad2746e37b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snake: {fileID: 957727193635159387}

@@ -8,6 +8,8 @@ public class Snake2 : MonoBehaviour
     public Transform segmentPrefab;
     public Vector2 direction = Vector2.right;
     private Vector2 input;
+    public int width;
+    public int height;
     public int initialSize = 4;
 
     private void Start()
@@ -79,7 +81,7 @@ public class Snake2 : MonoBehaviour
         segments.RemoveAt(segments.Count - 1);
     }
 
-  
+
     public void ResetState()
     {
         direction = Vector2.right;
